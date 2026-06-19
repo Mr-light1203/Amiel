@@ -33,13 +33,7 @@ export default function App() {
           </p>
         </div>
 
-        <button
-          type="button"
-          aria-pressed={isOpen}
-          aria-label={isOpen ? 'Flip the photo card to the front' : 'Flip the photo card to the back'}
-          onClick={() => setIsOpen((current) => !current)}
-          className="relative flex flex-col items-center bg-transparent p-0 text-center focus:outline-none focus-visible:ring-4 focus-visible:ring-[#d58f55]/40 focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7efe4]"
-        >
+        <div className="relative flex flex-col items-center text-center">
           <div className={`flip-card-shell ${isOpen ? 'is-flipped' : ''}`}>
             <div className="flip-card-shadow" />
 
@@ -58,6 +52,12 @@ export default function App() {
                   </p>
                 </div>
                 <span className="photo-chip">tap to flip</span>
+                <button
+                  type="button"
+                  aria-label="Flip the photo card to the back"
+                  onClick={() => setIsOpen(true)}
+                  className="face-toggle"
+                />
               </article>
 
               <article className="flip-face note-face">
@@ -91,10 +91,16 @@ export default function App() {
             </div>
           </div>
 
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#8b5a36] sm:text-sm">
+          <button
+            type="button"
+            aria-pressed={isOpen}
+            aria-label={isOpen ? 'Flip the photo card to the front' : 'Flip the photo card to the back'}
+            onClick={() => setIsOpen((current) => !current)}
+            className="mt-5 text-xs font-semibold uppercase tracking-[0.28em] text-[#8b5a36] transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#d58f55]/40 focus-visible:ring-offset-4 focus-visible:ring-offset-[#f7efe4] sm:text-sm"
+          >
             {isOpen ? 'Tap to see the photo' : 'Tap to read the note'}
-          </p>
-        </button>
+          </button>
+        </div>
       </section>
     </main>
   )

@@ -88,6 +88,16 @@ select {
   box-shadow: 0 24px 44px rgba(110, 67, 35, 0.15);
 }
 
+.face-toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
 .photo-face {
   background: #f4e7d6;
 }
@@ -151,6 +161,7 @@ select {
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
+  min-height: 0;
   padding: clamp(1rem, 3vw, 1.8rem);
   border: 1px solid rgba(255, 255, 255, 0.8);
   background-image:
@@ -161,6 +172,7 @@ select {
 
 .note-header {
   margin-bottom: clamp(0.8rem, 2.5vw, 1.2rem);
+  flex-shrink: 0;
 }
 
 .note-kicker {
@@ -184,6 +196,23 @@ select {
   display: grid;
   gap: clamp(0.32rem, 1vw, 0.55rem);
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.3rem;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(191, 124, 77, 0.5) transparent;
+}
+
+.note-body::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+.note-body::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgba(191, 124, 77, 0.45);
 }
 
 .note-copy {
@@ -195,6 +224,7 @@ select {
 
 .note-footer {
   margin-top: clamp(1rem, 2.6vw, 1.5rem);
+  flex-shrink: 0;
 }
 
 .note-tags {
@@ -225,7 +255,9 @@ select {
 
 @media (max-width: 640px) {
   .flip-card-shell {
-    width: min(94vw, 32rem);
+    width: min(94vw, 23rem);
+    height: min(78vh, 30rem);
+    aspect-ratio: auto;
   }
 
   .photo-caption {
