@@ -39,6 +39,7 @@ export default function App() {
 
             <div className="flip-card-inner">
               <article className="flip-face photo-face">
+                <img src={photo} alt="" aria-hidden="true" className="photo-backdrop-image" />
                 <img
                   src={photo}
                   alt="A photo of us together at a restaurant"
