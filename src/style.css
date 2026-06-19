@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  color: #34231d;
+  background: #f7efe4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.photo-grid {
+  background-image:
+    linear-gradient(90deg, rgba(231, 205, 180, 0.14) 1px, transparent 1px),
+    linear-gradient(rgba(231, 205, 180, 0.14) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black 28%, transparent 82%);
+}
+
+.flip-card-shell {
+  position: relative;
+  width: min(92vw, 42rem);
+  aspect-ratio: 4 / 3;
+  perspective: 1800px;
+}
+
+.flip-card-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: -0.3rem;
+  width: 72%;
+  height: 1.5rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  background: rgba(117, 74, 43, 0.17);
+  filter: blur(20px);
+  transition:
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 700ms ease;
+}
+
+.flip-card-shell.is-flipped .flip-card-shadow {
+  transform: translateX(-50%) scale(0.95);
+  opacity: 0.75;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 820ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-card-shell.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: clamp(1.25rem, 2.8vw, 1.9rem);
+  backface-visibility: hidden;
+  box-shadow: 0 24px 44px rgba(110, 67, 35, 0.15);
+}
+
+.photo-face {
+  background: #f4e7d6;
+}
+
+.photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: clamp(1rem, 3vw, 1.7rem);
+  background: linear-gradient(180deg, transparent, rgba(27, 20, 17, 0.78));
+  color: white;
+  text-align: left;
+}
+
+.photo-kicker {
+  margin: 0 0 0.3rem;
+  font-size: clamp(0.62rem, 1.4vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.photo-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 0.92;
+}
+
+.photo-caption {
+  margin: 0.45rem 0 0;
+  max-width: 24rem;
+  font-size: clamp(0.8rem, 1.9vw, 1rem);
+  line-height: 1.55;
+  color: rgba(255, 245, 236, 0.92);
+}
+
+.photo-chip {
+  position: absolute;
+  top: clamp(0.9rem, 2vw, 1.2rem);
+  right: clamp(0.9rem, 2vw, 1.2rem);
+  border-radius: 9999px;
+  background: rgba(255, 248, 239, 0.88);
+  padding: 0.48rem 0.8rem;
+  font-size: clamp(0.58rem, 1.2vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b87449;
+  backdrop-filter: blur(8px);
+}
+
+.note-face {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(255, 247, 237, 0.97)),
+    radial-gradient(circle at top right, rgba(245, 201, 144, 0.24), transparent 26%);
+  text-align: left;
+}
+
+.note-header {
+  margin-bottom: clamp(0.8rem, 2.5vw, 1.2rem);
+}
+
+.note-kicker {
+  margin: 0 0 0.4rem;
+  font-size: clamp(0.62rem, 1.4vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #b07950;
+}
+
+.note-title {
+  margin: 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.3rem);
+  line-height: 0.92;
+  color: #6a3f24;
+}
+
+.note-body {
+  display: grid;
+  gap: clamp(0.32rem, 1vw, 0.55rem);
+  flex: 1;
+}
+
+.note-copy {
+  margin: 0;
+  font-size: clamp(0.82rem, 1.8vw, 1rem);
+  line-height: 1.6;
+  color: #664b3d;
+}
+
+.note-footer {
+  margin-top: clamp(1rem, 2.6vw, 1.5rem);
+}
+
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.note-tags span {
+  border-radius: 9999px;
+  background: rgba(255, 247, 238, 0.92);
+  padding: 0.4rem 0.74rem;
+  font-size: clamp(0.56rem, 1.1vw, 0.66rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b87449;
+  box-shadow: inset 0 0 0 1px rgba(234, 207, 180, 0.8);
+}
+
+.note-signoff {
+  margin: clamp(0.8rem, 2.3vw, 1rem) 0 0;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  line-height: 1;
+  color: #8f4f2d;
+}
+
+@media (max-width: 640px) {
+  .flip-card-shell {
+    width: min(94vw, 32rem);
+  }
+
+  .photo-caption {
+    max-width: 17rem;
+  }
+}
